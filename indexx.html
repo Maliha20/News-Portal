@@ -55,10 +55,53 @@
       </header>
 
       <main>
-        <section class="container">
+        <section class="container mt-4">
           <div class="alert alert-light" role="alert">
             <span id="news-count">0</span> items found for category <span id="category-name"></span>
           </div>
+        </section>
+
+        <section class="container d-flex justify-content-between">
+         
+          <div class="d-flex gap-2 justify-content-center align-items-center">
+            <p class="p-0 m-0">Sort By:</p>
+            <div>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Default</option>
+           </select>
+            </div>
+           </div>
+         
+         <div>
+          <button id="todays-pick" type="button" class="btn btn-primary" onclick="showTodaysPick()">Today's Pick</button>
+          <button id="trending" type="button" class="btn btn-outline-primary" onclick="showTrending()">Trending</button>
+         </div>
+        </section>
+        <section class="all-news  container my-4" id="all-news">
+          
+        </section>
+
+
+        <section>
+          <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="news-detail-modal" tabindex="-1" aria-labelledby="news-detail-modal-Label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="news-detail-modal-Label">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
         </section>
        
       </main>
@@ -72,5 +115,6 @@
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"
   ></script>
+  <script src="https://kit.fontawesome.com/30eb9de500.js" crossorigin="anonymous"></script>
 </body>
 </html>
