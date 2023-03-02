@@ -33,7 +33,7 @@ const newsContainer = document.getElementById('all-news');
  newsContainer.textContent = ''
      
    data.forEach(singleNews =>{
-    const {_id, image_url,title,details,author,total_view}= singleNews
+    const {_id, image_url,title,details,author,total_view,rating}= singleNews
       const newsDiv = document.createElement('div');
       newsDiv.classList.add('card' ,'mb-3')
       newsDiv.innerHTML = `
@@ -56,12 +56,13 @@ const newsContainer = document.getElementById('all-news');
                 <p class="p-0 m-0">${author.published_date}</p>
                 </div>
                 </div>
-                <div class="d-flex g-2 align-items-center">
+                <div class="d-flex gap-2 align-items-center">
                 <i class="fa-regular fa-eye"></i>
                 <p class="p-0 m-0">${total_view ? total_view : "not available"}</p>
                 </div>
-                <div>
-                <i class="fa-solid fa-star"></i>
+                <div class=d-flex gap-2>
+                ${generateStars(rating.number)}
+                <p>${rating.number}</p>
                 </div>
                 <div>
                 <i class="fa-solid fa-arrow-right text-primary " onclick = "fetchNewsDetails('${_id}')" data-bs-toggle="modal" data-bs-target="#news-detail-modal"></i>
@@ -130,4 +131,17 @@ const showTodaysPick=()=>{
   
   const category_name =document.getElementById('category-name').innerText 
   showAllnews (todaysPick,category_name)
+}
+
+const generateStars = rating  =>{
+  let ratingHTML = '';
+  for (let i = 1; i <= Math.floor(rating); i++){
+    ratingHTML += `
+    <i class="fa-solid fa-star"></i> `
+    
+  }
+if(rating - Math.floor(rating)>0){
+  ratingHTML += `<i class="fa-solid fa-star-half"></i>`
+}
+return ratingHTML;
 }
